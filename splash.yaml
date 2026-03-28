@@ -1,0 +1,17 @@
+flutter_native_splash:
+  color: "#FFFFFF" # white Color
+  color_dark: '#000000' # black Color
+  image: assets\logo\t-store-splash-logo-black.png
+  image_dark: assets\logo\t-store-splash-logo-white.png
+
+fullscreen: true 
+
+
+# ANDROID 12+ configuration:
+android_12:
+  color: "#FFFFFF" # white Color
+  color_dark: '#000000' # black Color
+  image: assets\logo\t-store-splash-logo-black.png
+  image_dark: assets\logo\t-store-splash-logo-white.png
+
+web: false
