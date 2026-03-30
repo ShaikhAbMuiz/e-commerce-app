@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/shop/screens/home/home.dart';
 import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/helpers/helper_fuction.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,7 @@ class NavigationIndex extends GetxController {
   RxInt selectedIndex = 0.obs;
 
   List<Widget> screens = [
-    Container(color: UColors.error),
+    HomeScreen(),
     Container(color: UColors.infe),
     Container(color: UColors.light),
     Container(color: UColors.primary),
