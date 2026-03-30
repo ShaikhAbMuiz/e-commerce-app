@@ -63,4 +63,7 @@ instructions to reset your password''';
   static const String accountCreatedTitle = "Your Account Successfully Created";
   static const String accountCreatedSubTitle =
       "Congratulations! Your account has been successfully created.You can now explore all the amazing features. Start personalizing your experience, seamless access to our services. Let's get started!";
+
+  static const String homeAppBarTitle = "Good Morning";
+  static const String homeAppBarSubTitle = "Abdul Muiz Pro";
 }
