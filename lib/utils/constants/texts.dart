@@ -66,4 +66,7 @@ instructions to reset your password''';
 
   static const String homeAppBarTitle = "Good Morning";
   static const String homeAppBarSubTitle = "Abdul Muiz Pro";
+  
+  static const String homeScreenSearchBarTitle = "Search in Store";
+  static const String popularCategories = "Popular Categories";
 }

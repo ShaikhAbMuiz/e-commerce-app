@@ -35,6 +35,9 @@ class UHomeAppBar extends StatelessWidget {
 
       /// Bag
       actions: [UCartCounterIcon()],
+
+      /// Background Color
+      
     );
   }
 }
