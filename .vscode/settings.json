@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "D:/Dart_And_Flutter/e_commerce/linux"
+  "cmake.sourceDirectory": "D:/Dart_And_Flutter/e_commerce/linux",
+  "dart.flutterSdkPath": "~/fvm/versions/3.29.3"
 }
