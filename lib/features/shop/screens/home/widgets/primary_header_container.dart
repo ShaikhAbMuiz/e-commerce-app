@@ -1,7 +1,8 @@
 import 'package:e_commerce/common/widgets/custom_shapes/circular_container.dart';
 import 'package:e_commerce/common/widgets/custom_shapes/rounded_edge_container.dart';
 import 'package:e_commerce/utils/constants/colors.dart';
-import 'package:e_commerce/utils/helpers/device_helpers.dart';
+import 'package:e_commerce/utils/constants/sizes.dart';
+
 import 'package:flutter/material.dart';
 
 class UPrimaryHeaderContainer extends StatelessWidget {
@@ -11,7 +12,7 @@ class UPrimaryHeaderContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return URoundedEdgesContainer(
       child: Container(
-        height: UDeviceHelpers.getScreenHeight(context) * 0.4,
+        height: USizes.primaryHeaderHeight,
         color: UColors.primary,
         child: Stack(
           children: [
@@ -20,8 +21,8 @@ class UPrimaryHeaderContainer extends StatelessWidget {
               top: -150,
               right: -200,
               child: UCircularContainer(
-                height: UDeviceHelpers.getScreenHeight(context) * 0.4,
-                width: UDeviceHelpers.getScreenWidth(context) * 0.9,
+                height: USizes.primaryHeaderHeight,
+                width: USizes.primaryHeaderWidth,
                 backgroundColor: UColors.white.withValues(alpha: 0.1),
                 radius: 500,
               ),
@@ -32,8 +33,8 @@ class UPrimaryHeaderContainer extends StatelessWidget {
               top: 50,
               right: -280,
               child: UCircularContainer(
-                height: UDeviceHelpers.getScreenHeight(context) * 0.4,
-                width: UDeviceHelpers.getScreenWidth(context) * 0.9,
+                height: USizes.primaryHeaderHeight,
+                width: USizes.primaryHeaderWidth,
                 backgroundColor: UColors.white.withValues(alpha: 0.1),
                 radius: 500,
               ),
