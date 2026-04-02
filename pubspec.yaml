@@ -25,6 +25,7 @@ dependencies:
 
 # State Management
   get: ^4.7.3
+  carousel_slider: ^5.1.2
 
 
 #----------------------------------------------------------
@@ -49,6 +50,7 @@ flutter:
     - assets/animations/
     - assets/images/
     - assets/icons/categories/
+    - assets/banners/
 
 
 
