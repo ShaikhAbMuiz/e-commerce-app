@@ -69,4 +69,6 @@ instructions to reset your password''';
   
   static const String homeScreenSearchBarTitle = "Search in Store";
   static const String popularCategories = "Popular Categories";
+  static const String popularProductsTitle = "Popular Products";
+  static const String viewAll = "View All";
 }
