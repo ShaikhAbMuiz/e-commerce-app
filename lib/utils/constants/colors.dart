@@ -36,4 +36,8 @@ class UColors {
   static const Color grey = Color(0xf0e0e0e0);
   static const Color lightGrey = Color(0xFFF9F9F9);
   static const Color white = Color(0xFFFFFFFF);
+
+  // Adding
+  static const Color yellow = Color(0xFFFFC107); 
+  static const Color red = Color(0xFFD32F2F); 
 }

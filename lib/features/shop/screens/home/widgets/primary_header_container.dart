@@ -24,7 +24,6 @@ class UPrimaryHeaderContainer extends StatelessWidget {
                 height: USizes.primaryHeaderHeight,
                 width: USizes.primaryHeaderWidth,
                 backgroundColor: UColors.white.withValues(alpha: 0.1),
-                radius: 500,
               ),
             ),
 
@@ -36,7 +35,6 @@ class UPrimaryHeaderContainer extends StatelessWidget {
                 height: USizes.primaryHeaderHeight,
                 width: USizes.primaryHeaderWidth,
                 backgroundColor: UColors.white.withValues(alpha: 0.1),
-                radius: 500,
               ),
             ),
 
