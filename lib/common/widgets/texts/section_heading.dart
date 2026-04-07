@@ -4,7 +4,7 @@ class USectionHeading extends StatelessWidget {
   const USectionHeading({
     super.key,
     required this.title,
-    this.onPressed, 
+    this.onPressed,
     this.textColor,
     this.buttonTitle = "View All",
   });

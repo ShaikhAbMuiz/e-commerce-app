@@ -2,9 +2,12 @@ import 'package:e_commerce/common/styles/shadow.dart';
 import 'package:e_commerce/common/widgets/custom_shapes/rounded_container.dart';
 import 'package:e_commerce/common/widgets/icons/circular_icon.dart';
 import 'package:e_commerce/common/widgets/images/rounded_image.dart';
+
+import 'package:e_commerce/common/widgets/texts/brand_title_with_verify_icon.dart';
 import 'package:e_commerce/common/widgets/texts/product_price_text.dart';
 import 'package:e_commerce/common/widgets/texts/product_title_text.dart';
 import 'package:e_commerce/utils/constants/colors.dart';
+
 import 'package:e_commerce/utils/constants/images.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/helpers/helper_fuction.dart';
@@ -86,25 +89,7 @@ class UProductCardVertical extends StatelessWidget {
                   SizedBox(height: USizes.spaceBtwItems / 2),
 
                   /// Product Brand and Verified Icon
-                  Row(
-                    children: [
-                      /// Product Brand Name
-                      Text(
-                        "Bata",
-                        style: Theme.of(context).textTheme.labelMedium,
-                        textAlign: TextAlign.left,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      SizedBox(height: USizes.xs),
-
-                      /// Verified Icon
-                      Icon(
-                        Iconsax.verify5,
-                        color: UColors.primary,
-                        size: USizes.iconXs,
-                      ),
-                    ],
-                  ),
+                  UBrandTitleWithVerifyIcon(title: "Bata"),
                 ],
               ),
             ),

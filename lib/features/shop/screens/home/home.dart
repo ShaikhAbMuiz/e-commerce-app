@@ -1,4 +1,3 @@
-
 import 'package:e_commerce/common/widgets/layout/grid_layout.dart';
 import 'package:e_commerce/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:e_commerce/common/widgets/textfields/search_bar.dart';
@@ -29,10 +28,11 @@ class HomeScreen extends StatelessWidget {
             Stack(
               children: [
                 /// Total Height + 20
-                SizedBox(height: USizes.primaryHeaderHeight + 10),
+                SizedBox(height: USizes.homePrimaryHeaderHeight + 10),
 
                 /// Primary Header Container
                 UPrimaryHeaderContainer(
+                  height: USizes.homePrimaryHeaderHeight,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
