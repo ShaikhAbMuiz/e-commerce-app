@@ -14,7 +14,7 @@ class UBrandCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return URoundedContainer(
       height: USizes.brandCardHeight,
-      width: USizes.brandCardWidth,
+
       showBoader: showBoader,
       padding: EdgeInsets.all(USizes.sm),
       backgroundColor: Colors.transparent,
@@ -43,7 +43,7 @@ class UBrandCard extends StatelessWidget {
 
                 /// Product Count Text
                 Text(
-                  "172 Products diuahdauiduioaouide",
+                  "172 Products",
                   style: Theme.of(context).textTheme.labelMedium,
                   overflow: TextOverflow.ellipsis,
                 ),
