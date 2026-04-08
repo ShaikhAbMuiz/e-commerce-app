@@ -14,6 +14,7 @@ class StoreScreen extends StatelessWidget {
     return DefaultTabController(
       length: 5,
       child: Scaffold(
+        /// Appbar
         body: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return [
@@ -50,7 +51,10 @@ class StoreScreen extends StatelessWidget {
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder:
-                                    (context, index) => const UBrandCard(),
+                                    (context, index) => SizedBox(
+                                      width: USizes.brandCardWidth,
+                                      child: const UBrandCard(),
+                                    ),
                                 itemCount: 10,
                               ),
                             ),

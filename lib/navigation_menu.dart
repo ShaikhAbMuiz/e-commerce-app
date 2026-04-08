@@ -1,5 +1,6 @@
 import 'package:e_commerce/features/shop/screens/home/home.dart';
 import 'package:e_commerce/features/shop/screens/store/store.dart';
+import 'package:e_commerce/features/shop/screens/wishlist/wishlist.dart';
 import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/helpers/helper_fuction.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,8 @@ class NavigationMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(NavigationIndex());
+   
+    final controller = Get.put(NavigationController());
 
     bool dark = UHelperFunction.isDarkMode(context);
     return Scaffold(
@@ -40,13 +42,14 @@ class NavigationMenu extends StatelessWidget {
   }
 }
 
-class NavigationIndex extends GetxController {
+class NavigationController extends GetxController {
+  static NavigationController get instance => Get.find();
   RxInt selectedIndex = 0.obs;
 
   List<Widget> screens = [
     HomeScreen(),
     StoreScreen(),
-    Container(color: UColors.light),
+    WishlistScreen(),
     Container(color: UColors.primary),
   ];
 }
