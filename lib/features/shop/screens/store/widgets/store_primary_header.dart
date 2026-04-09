@@ -7,20 +7,18 @@ import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 class UStorePrimaryHeader extends StatelessWidget {
-  const UStorePrimaryHeader({
-    super.key,
-  });
+  const UStorePrimaryHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         /// Total Height + 10
-        SizedBox(height: USizes.storeprimaryHeaderHeight + 10),
-    
+        SizedBox(height: USizes.storePrimaryHeaderHeight + 10),
+
         /// Primary Header Container
         UPrimaryHeaderContainer(
-          height: USizes.storeprimaryHeaderHeight,
+          height: USizes.storePrimaryHeaderHeight,
           child: UAppBar(
             title: Text(
               "Store",
@@ -31,7 +29,7 @@ class UStorePrimaryHeader extends StatelessWidget {
             actions: [UCartCounterIcon()],
           ),
         ),
-    
+
         /// Search Bar
         USearchBar(),
       ],

@@ -10,6 +10,7 @@ class UImages {
   /// Social Icons
   static const String facebookIcon = "assets/logo/facebook-icon.png";
   static const String googleIcon = "assets/logo/google-icon.png";
+  static const String profileImage = "assets/logo/profile.png";
 
   /// Forget Password Images
   static const String accountCreatedImage = "assets/images/account_created.png";

@@ -54,9 +54,17 @@ class USizes {
   /// Card Sizes
   static const double homePrimaryHeaderHeight = 320;
   static const double homePrimaryHeaderWidth = 360;
-  static const double storeprimaryHeaderHeight = 170; /// 170
+  static const double storePrimaryHeaderHeight = 170;
 
+  /// 170
+  static const double profilePrimaryHeaderHeight = 170;
 
-  static const double brandCardWidth = 170; /// 170
-  static const double brandCardHeight = 70; /// 170
+  /// 170
+
+  static const double brandCardWidth = 170;
+
+  /// 170
+  static const double brandCardHeight = 70;
+
+  /// 170
 }
