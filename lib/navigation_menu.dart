@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/personalization/screens/profile/profile.dart';
 import 'package:e_commerce/features/shop/screens/home/home.dart';
 import 'package:e_commerce/features/shop/screens/store/store.dart';
 import 'package:e_commerce/features/shop/screens/wishlist/wishlist.dart';
@@ -12,7 +13,6 @@ class NavigationMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
     final controller = Get.put(NavigationController());
 
     bool dark = UHelperFunction.isDarkMode(context);
@@ -50,6 +50,7 @@ class NavigationController extends GetxController {
     HomeScreen(),
     StoreScreen(),
     WishlistScreen(),
-    Container(color: UColors.primary),
+    ProfileScreen(),
+    // UCircularImage(),
   ];
 }
