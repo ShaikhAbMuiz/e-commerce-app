@@ -36,10 +36,12 @@ class NavigationMenu extends StatelessWidget {
             NavigationDestination(icon: Icon(Iconsax.heart), label: 'Wishlist'),
             NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
           ],
+          
         ),
       ),
     );
   }
+
 }
 
 class NavigationController extends GetxController {
