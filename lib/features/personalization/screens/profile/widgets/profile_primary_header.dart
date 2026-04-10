@@ -17,6 +17,7 @@ class UProfilePrimaryHeader extends StatelessWidget {
 
         ///----------------------------[Primary Header]-------------------------
         UPrimaryHeaderContainer(
+          // ignore: sort_child_properties_last
           child: Container(),
           height: USizes.profilePrimaryHeaderHeight,
         ),
