@@ -3,7 +3,6 @@ import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/helpers/helper_fuction.dart';
 import 'package:flutter/material.dart';
 
-
 class UCircularImage extends StatelessWidget {
   const UCircularImage({
     super.key,
@@ -40,7 +39,10 @@ class UCircularImage extends StatelessWidget {
       decoration: BoxDecoration(
         color: backgroundColor ?? (dark ? UColors.dark : UColors.light),
         borderRadius: BorderRadius.circular(100),
-        border: Border.all(color: boaderColor, width: boaderWidth),
+        border:
+            showBoader
+                ? Border.all(color: boaderColor, width: boaderWidth)
+                : null,
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100),
