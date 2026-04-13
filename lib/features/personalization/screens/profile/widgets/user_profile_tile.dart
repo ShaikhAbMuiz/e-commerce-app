@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/personalization/screens/edit_profile.dart/edit_profile.dart';
+import 'package:e_commerce/features/personalization/screens/edit_profile/edit_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';

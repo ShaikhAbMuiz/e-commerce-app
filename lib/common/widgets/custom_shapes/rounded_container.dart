@@ -10,7 +10,7 @@ class URoundedContainer extends StatelessWidget {
     this.radius = USizes.cardRadiusLg,
     this.child,
     this.showBoader = false,
-    this.borderColor = UColors.borderPrimary,
+    this.borderColor = UColors.borderDisabled,
     this.backgroundColor = UColors.white,
     this.margin,
     this.padding,
