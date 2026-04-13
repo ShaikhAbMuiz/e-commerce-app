@@ -2,7 +2,7 @@ import 'package:e_commerce/common/styles/padding.dart';
 import 'package:e_commerce/common/widgets/appbar/appbar.dart';
 import 'package:e_commerce/common/widgets/texts/section_heading.dart';
 
-import 'package:e_commerce/features/personalization/screens/edit_profile.dart/widgets/user_profile_with_edit_icon.dart';
+import 'package:e_commerce/features/personalization/screens/edit_profile/widgets/user_profile_with_edit_icon.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
