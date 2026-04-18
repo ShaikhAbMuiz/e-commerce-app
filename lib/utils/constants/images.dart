@@ -240,4 +240,10 @@ class UImages {
   static const String nikeLogo = 'assets/brands/nike.png';
   static const String northStarLogo = 'assets/brands/north_star.jpg';
   static const String poloLogo = 'assets/brands/polo.png';
+
+  /// Payments Logos
+  static const String masterCard =
+      'assets/icons/payment_methods/master-card.png';
+  static const String successPayment =
+      'assets/icons/payment_methods/successful_payment_icon.png';
 }
