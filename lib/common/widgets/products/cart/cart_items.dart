@@ -7,8 +7,8 @@ import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/helpers/helper_fuction.dart';
 import 'package:flutter/material.dart';
 
-class UCartItems extends StatelessWidget {
-  const UCartItems({super.key});
+class UCartItem extends StatelessWidget {
+  const UCartItem({super.key});
 
   @override
   Widget build(BuildContext context) {
