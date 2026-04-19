@@ -4,7 +4,7 @@ import 'package:e_commerce/common/widgets/buttons/elevated_button.dart';
 import 'package:e_commerce/common/widgets/custom_shapes/rounded_container.dart';
 import 'package:e_commerce/common/widgets/screen/success_screen.dart';
 import 'package:e_commerce/common/widgets/textfields/promo_code.dart';
-import 'package:e_commerce/common/widgets/texts/section_heading.dart';
+
 import 'package:e_commerce/features/shop/screens/cart/widgets/cart_items.dart';
 import 'package:e_commerce/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:e_commerce/features/shop/screens/checkout/widgets/billing_amount_section.dart';
@@ -13,7 +13,7 @@ import 'package:e_commerce/navigation_menu.dart';
 import 'package:e_commerce/utils/constants/colors.dart' show UColors;
 import 'package:e_commerce/utils/constants/images.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
-import 'package:e_commerce/utils/helpers/helper_fuction.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,7 +22,7 @@ class CheckoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = UHelperFunction.isDarkMode(context);
+
     return Scaffold(
       //! --------[AppBar]--------
       appBar: UAppBar(

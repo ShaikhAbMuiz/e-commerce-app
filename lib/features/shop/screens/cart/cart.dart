@@ -1,9 +1,7 @@
 import "package:e_commerce/common/styles/padding.dart";
 import "package:e_commerce/common/widgets/appbar/appbar.dart";
 import "package:e_commerce/common/widgets/buttons/elevated_button.dart";
-import "package:e_commerce/common/widgets/products/cart/cart_items.dart";
-import "package:e_commerce/common/widgets/products/cart/product_quantity_with_add_remove.dart";
-import "package:e_commerce/common/widgets/texts/product_price_text.dart";
+
 import "package:e_commerce/features/shop/screens/cart/widgets/cart_items.dart";
 import "package:e_commerce/features/shop/screens/checkout/checkout.dart";
 import "package:e_commerce/utils/constants/colors.dart";
