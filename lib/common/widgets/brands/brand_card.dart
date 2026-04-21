@@ -7,50 +7,54 @@ import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 class UBrandCard extends StatelessWidget {
-  const UBrandCard({super.key, this.showBoader = true});
+  const UBrandCard({super.key, this.showBoader = true, this.onTap});
 
   final bool showBoader;
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
-    return URoundedContainer(
-      height: USizes.brandCardHeight,
+    return GestureDetector(
+      onTap: onTap,
+      child: URoundedContainer(
+        height: USizes.brandCardHeight,
 
-      showBoader: showBoader,
-      padding: EdgeInsets.all(USizes.sm),
-      backgroundColor: Colors.transparent,
-      child: Row(
-        children: [
-          /// Brand Image
-          Flexible(
-            child: URoundedImage(
-              imageUrl: UImages.bataLogo,
-              backgroundColor: Colors.transparent,
+        showBoader: showBoader,
+        padding: EdgeInsets.all(USizes.sm),
+        backgroundColor: Colors.transparent,
+        child: Row(
+          children: [
+            /// Brand Image
+            Flexible(
+              child: URoundedImage(
+                imageUrl: UImages.bataLogo,
+                backgroundColor: Colors.transparent,
+              ),
             ),
-          ),
-          SizedBox(width: USizes.spaceBtwItems / 2),
+            SizedBox(width: USizes.spaceBtwItems / 2),
 
-          ///Brand Name & Verify Icon and Product Count
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ///Brand Name & Verify Icon
-                UBrandTitleWithVerifyIcon(
-                  title: "Bata",
-                  brandTextSize: TextSizes.large,
-                ),
+            ///Brand Name & Verify Icon and Product Count
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ///Brand Name & Verify Icon
+                  UBrandTitleWithVerifyIcon(
+                    title: "Bata",
+                    brandTextSize: TextSizes.large,
+                  ),
 
-                /// Product Count Text
-                Text(
-                  "172 Products",
-                  style: Theme.of(context).textTheme.labelMedium,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
+                  /// Product Count Text
+                  Text(
+                    "172 Products",
+                    style: Theme.of(context).textTheme.labelMedium,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

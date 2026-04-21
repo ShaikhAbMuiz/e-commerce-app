@@ -3,6 +3,7 @@ import 'package:e_commerce/common/widgets/products/product_card/product_card_ver
 import 'package:e_commerce/common/widgets/textfields/search_bar.dart';
 import 'package:e_commerce/common/widgets/texts/section_heading.dart';
 import 'package:e_commerce/features/shop/controllers/home/home_controller.dart';
+import 'package:e_commerce/features/shop/screens/all_products/all_products.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/primary_header_container.dart';
@@ -69,10 +70,10 @@ class HomeScreen extends StatelessWidget {
                   ),
                   SizedBox(height: USizes.spaceBtwSections),
 
-                  /// Section Heading
+                  /// Section Heading --- Popular Products
                   USectionHeading(
                     title: UTexts.popularProductsTitle,
-                    onPressed: () {},
+                    onPressed: () => Get.to(() => const AllProductsScreen()),
                   ),
                   SizedBox(height: USizes.spaceBtwItems),
 

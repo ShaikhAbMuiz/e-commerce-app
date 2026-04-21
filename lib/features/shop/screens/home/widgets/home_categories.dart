@@ -1,10 +1,11 @@
-
 import 'package:e_commerce/common/widgets/image_text/vertical_image_text.dart';
+import 'package:e_commerce/features/shop/screens/sub_category/sub_category.dart';
 import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/constants/images.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class UHomeCategories extends StatelessWidget {
   const UHomeCategories({super.key});
@@ -39,6 +40,7 @@ class UHomeCategories extends StatelessWidget {
                   image: UImages.categoriesIconSports,
                   title: 'Sports Categories',
                   textColor: UColors.white,
+                  onTap: () => Get.to(() => const SubCategoryScreen()),
                 );
               },
             ),

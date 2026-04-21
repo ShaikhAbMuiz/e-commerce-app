@@ -3,6 +3,7 @@ import 'package:e_commerce/features/personalization/screens/address/address.dart
 import 'package:e_commerce/features/personalization/screens/profile/widgets/profile_primary_header.dart';
 import 'package:e_commerce/features/personalization/screens/profile/widgets/setting_menu_tile.dart';
 import 'package:e_commerce/features/personalization/screens/profile/widgets/user_profile_tile.dart';
+import 'package:e_commerce/features/shop/screens/cart/cart.dart';
 import 'package:e_commerce/features/shop/screens/order/order.dart';
 
 import 'package:e_commerce/utils/constants/sizes.dart';
@@ -48,6 +49,7 @@ class ProfileScreen extends StatelessWidget {
                     icon: Iconsax.shopping_cart,
                     title: "My Cart",
                     subtitle: "Add remove products and move to checkout",
+                    onTap: () => Get.to(() => CartScreen()),
                   ),
                   SettingMenuTile(
                     icon: Iconsax.bag_tick,
