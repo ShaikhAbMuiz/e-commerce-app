@@ -16,7 +16,7 @@ class UProductMetaData extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        /// Sale Tag , Original Price and Sale Price , Share Button
+        /// Sale Tag , Original Price and Sale Price , Share Button , Product Title , Product Status , Brand Image With Title
         Row(
           children: [
             /// Sale Tag
