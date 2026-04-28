@@ -23,10 +23,16 @@ dependencies:
   smooth_page_indicator: ^1.0.0
   iconsax: ^0.0.8
   expandable: ^5.0.1
+  carousel_slider: ^5.1.2
 
 # State Management
   get: ^4.7.3
-  carousel_slider: ^5.1.2
+  
+# Firebase
+  firebase_core: ^2.15.0
+  firebase_auth: ^4.6.2
+  cloud_firestore: ^4.8.0
+  google_sign_in: ^7.2.0
   
 
 
