@@ -1,11 +1,13 @@
 import 'package:e_commerce/common/styles/padding.dart';
 import 'package:e_commerce/common/widgets/buttons/social_buttons.dart';
 import 'package:e_commerce/common/widgets/login_signup.dart/form_divider.dart';
+import 'package:e_commerce/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:e_commerce/features/authentication/screens/signup/widgets/signup_form.dart';
 
 import 'package:e_commerce/utils/constants/sizes.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../utils/constants/texts.dart';
 
@@ -14,6 +16,7 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignupController());
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -41,7 +44,6 @@ class SignupScreen extends StatelessWidget {
               ///  ------------[Footer]--------------------
               USocialButtons(),
 
-              ///
             ],
           ),
         ),
