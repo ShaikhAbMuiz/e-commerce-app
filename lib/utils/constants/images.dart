@@ -6,6 +6,7 @@ class UImages {
   static const String onboardingAnimation2 = "assets/animations/cart.json";
   static const String onboardingAnimation3 = "assets/animations/delivery.json";
   static const String thankyouAnimation = "assets/animations/thankyou.json";
+  static const String loadingAnimation = "assets/animations/loading.json";
 
   /// Social Icons
   static const String facebookIcon = "assets/logo/facebook-icon.png";
