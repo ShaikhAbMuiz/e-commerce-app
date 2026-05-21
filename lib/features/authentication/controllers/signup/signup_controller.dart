@@ -99,7 +99,7 @@ class SignupController extends GetxController {
       UFullScreenLoader.stopLoading();
 
       // Redirect to verify email screen
-      Get.to(() => const VerifyEmailScreen());
+      Get.to(() => VerifyEmailScreen(email: email.text));
     } catch (e) {
       //Debug Print
       // print(

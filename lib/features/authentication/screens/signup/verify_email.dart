@@ -1,7 +1,5 @@
 import 'package:e_commerce/common/styles/padding.dart';
 import 'package:e_commerce/common/widgets/buttons/elevated_button.dart';
-import 'package:e_commerce/common/widgets/screen/success_screen.dart';
-import 'package:e_commerce/features/authentication/screens/login/login.dart';
 import 'package:e_commerce/utils/constants/images.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/texts.dart';
@@ -10,17 +8,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../data/repositories/authentication_repository.dart';
+import '../../controllers/signup/verify_email_controller.dart';
+
 class VerifyEmailScreen extends StatelessWidget {
-  const VerifyEmailScreen({super.key});
+  const VerifyEmailScreen({super.key, this.email});
+  final String? email;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(VerifyEmailController());
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            onPressed: () => Get.offAll(() => LoginScreen()),
+            onPressed: AuthenticationRepository.instance.logout,
             icon: Icon(CupertinoIcons.clear),
           ),
         ],
@@ -45,10 +48,7 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(height: USizes.spaceBtwItems),
 
               ///Email
-              Text(
-                "unknownpro@gmail.com",
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
+              Text(email ?? "", style: Theme.of(context).textTheme.bodyMedium),
               SizedBox(height: USizes.spaceBtwItems),
 
               ///SubTitle
@@ -62,24 +62,19 @@ class VerifyEmailScreen extends StatelessWidget {
               ///Continue
               UElevatedButton(
                 onPressed:
-                    () => Get.to(
-                      () => SuccessScreen(
-                        image: UImages.accountCreatedImage,
-                        title: UTexts.accountCreatedTitle,
-                        subTitle: UTexts.accountCreatedSubTitle,
-                        onTap: () {},
-                      ),
-                    ),
+                    controller
+                        .checkVerificationStatus, // Manually Check for Email Verification and Redirect to success screen if verified
+
                 child: Text(UTexts.uContinue),
               ),
-              
+
               SizedBox(height: USizes.spaceBtwSections),
 
               ///Resend Email
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: controller.sendEmailVerifaction,
                   child: Text(UTexts.resendEmail),
                 ),
               ),
