@@ -16,7 +16,7 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SignupController());
+    Get.put(SignupController());
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(

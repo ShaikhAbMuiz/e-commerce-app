@@ -11,6 +11,7 @@ class UserModel {
   String profilePicture;
   String publicId;
 
+  /// constructor
   UserModel({
     required this.id,
     required this.firstName,
@@ -39,6 +40,7 @@ class UserModel {
     profilePicture: "",
   );
 
+/// Function to convert user model to json
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -52,6 +54,7 @@ class UserModel {
     };
   }
 
+// Factory constructor to create user model from firestore document snapshot
   factory UserModel.fromSnapshot(
     DocumentSnapshot<Map<String, dynamic>> document,
   ) {
