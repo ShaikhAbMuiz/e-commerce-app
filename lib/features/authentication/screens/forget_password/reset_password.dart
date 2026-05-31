@@ -9,11 +9,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ResetPasswordScreen extends StatelessWidget {
-  const ResetPasswordScreen({super.key});
+import '../../controllers/forget_password/forget_password_controller.dart';
 
+class ResetPasswordScreen extends StatelessWidget {
+  const ResetPasswordScreen({super.key, required this.email});
+  final String email;
   @override
   Widget build(BuildContext context) {
+    final controller = ForgetPasswordController.instance;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -44,10 +47,7 @@ class ResetPasswordScreen extends StatelessWidget {
               SizedBox(height: USizes.spaceBtwItems),
 
               ///Email
-              Text(
-                "unknownpro@gmail.com",
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
+              Text(email, style: Theme.of(context).textTheme.bodyMedium),
               SizedBox(height: USizes.spaceBtwItems),
 
               ///SubTitle
@@ -59,14 +59,17 @@ class ResetPasswordScreen extends StatelessWidget {
               SizedBox(height: USizes.spaceBtwSections),
 
               ///Done
-              UElevatedButton(onPressed: () {}, child: Text(UTexts.done)),
+              UElevatedButton(
+                onPressed: () => Get.offAll(() => LoginScreen()),
+                child: Text(UTexts.done),
+              ),
               SizedBox(height: USizes.spaceBtwSections),
 
               ///Resend Email
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: controller.resendPaasswordResetEmail,
                   child: Text(UTexts.resendEmail),
                 ),
               ),

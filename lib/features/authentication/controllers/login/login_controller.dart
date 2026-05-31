@@ -55,7 +55,6 @@ class LoginController extends GetxController {
         email.text.trim(),
         password.text.trim(),
       );
-      print("Login Successful");
 
       // Stop Loading
       UFullScreenLoader.stopLoading();
