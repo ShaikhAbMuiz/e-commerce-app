@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../features/authentication/screens/signup/verify_email.dart';
 import '../../navigation_menu.dart';
@@ -20,6 +21,7 @@ class AuthenticationRepository extends GetxController {
   final _auth = FirebaseAuth.instance;
 
   @override
+  /// onReady is called when the controller is fully initialized and ready to be used. It's a good place to perform any initial setup or checks, such as checking if the user is already logged in and redirecting them accordingly.
   void onReady() {
     FlutterNativeSplash.remove();
 
@@ -96,6 +98,40 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+  /// [GoogleAuthentication] Login User with Google account
+  Future<UserCredential> signInWithGoogle() async {
+    try {
+      // Show Popup to select Google account
+      final GoogleSignInAccount? googleAccount = await GoogleSignIn().signIn();
+
+      // Get The Auth details From Request
+      final GoogleSignInAuthentication? googleAuth =
+          await googleAccount?.authentication;
+
+      // Create a new credential
+      final OAuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+
+      // Sign in using google credentials
+      UserCredential userCredential = await _auth.signInWithCredential(
+        credential,
+      );
+      return userCredential;
+    } on FirebaseAuthException catch (e) {
+      throw UFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } on FormatException catch (e) {
+      throw UFormatException(e.message).message;
+    } on PlatformException catch (e) {
+      throw UPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again later.";
+    }
+  }
+
   // [Email Verification] - Send email verification to the user
   Future<void> sendEmailVerification() async {
     try {
@@ -131,4 +167,6 @@ class AuthenticationRepository extends GetxController {
       throw "Something went wrong. Please try again later.";
     }
   }
+
+  ///
 }
