@@ -149,10 +149,30 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+  // [Forget Password] - Send Mail To User To Reset Password
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+     await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw UFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } on FormatException catch (e) {
+      throw UFormatException(e.message).message;
+    } on PlatformException catch (e) {
+      throw UPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again later.";
+    }
+  }
+
   /// [Logout] -- Sign out the user
   Future<void> logout() async {
     try {
+      // Sign out from Firebase
       await FirebaseAuth.instance.signOut();
+      // Sign out from Google
+      await GoogleSignIn().signOut();
 
       Get.offAll(() => const LoginScreen());
     } on FirebaseAuthException catch (e) {
