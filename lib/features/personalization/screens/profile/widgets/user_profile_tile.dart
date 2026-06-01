@@ -3,24 +3,32 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../controller/user_controller.dart';
+
 class UserProfileTile extends StatelessWidget {
-  const UserProfileTile({
-    super.key,
-  });
+  const UserProfileTile({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return ListTile(
       contentPadding: EdgeInsets.zero,
-      title: Text(
-        'Abdul Muiz',
-        style: Theme.of(context).textTheme.headlineSmall,
+      title: Obx(
+        () => Text(
+          controller.user.value.fullName,
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
       ),
-      subtitle: Text(
-        'abdulmuiz9922@gmail.com',
-        style: Theme.of(context).textTheme.bodyMedium,
+      subtitle: Obx(
+        () => Text(
+          controller.user.value.email,
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
       ),
-      trailing: IconButton(onPressed: () => Get.to(() => const EditProfileScreen()), icon: Icon(Iconsax.edit)),
+      trailing: IconButton(
+        onPressed: () => Get.to(() => const EditProfileScreen()),
+        icon: Icon(Iconsax.edit),
+      ),
     );
   }
 }
