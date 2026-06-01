@@ -7,11 +7,14 @@ import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../controller/user_controller.dart';
+
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
       appBar: UAppBar(
         showBackArrow: true,
@@ -40,8 +43,16 @@ class EditProfileScreen extends StatelessWidget {
               ),
 
               /// Account Details
-              UserDetailRow(title: "Name", value: "John Doe", onTap: () {}),
-              UserDetailRow(title: "Username", value: "John Doe", onTap: () {}),
+              UserDetailRow(
+                title: "Name",
+                value: controller.user.value.fullName,
+                onTap: () {},
+              ),
+              UserDetailRow(
+                title: "Username",
+                value: controller.user.value.username,
+                onTap: () {},
+              ),
               SizedBox(height: USizes.spaceBtwItems),
 
               /// Divider
@@ -57,7 +68,7 @@ class EditProfileScreen extends StatelessWidget {
               /// Profile Settings
               UserDetailRow(
                 title: "User ID",
-                value: "762076",
+                value: controller.user.value.id,
                 onTap: () {},
 
                 icon: Iconsax.copy,
@@ -65,10 +76,14 @@ class EditProfileScreen extends StatelessWidget {
 
               UserDetailRow(
                 title: "Email",
-                value: "abdulmuiz9922@gmail",
+                value: controller.user.value.email,
                 onTap: () {},
               ),
-              UserDetailRow(title: "Phone", value: "1234567890", onTap: () {}),
+              UserDetailRow(
+                title: "Phone",
+                value: "+91 ${controller.user.value.phoneNumber}",
+                onTap: () {},
+              ),
               UserDetailRow(title: "Gender", value: "Male", onTap: () {}),
 
               /// Divider
@@ -139,4 +154,3 @@ class UserDetailRow extends StatelessWidget {
     );
   }
 }
-

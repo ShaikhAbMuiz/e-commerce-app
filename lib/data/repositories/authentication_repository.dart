@@ -20,6 +20,9 @@ class AuthenticationRepository extends GetxController {
   // Firebase Authentication instance
   final _auth = FirebaseAuth.instance;
 
+  /// Getter to get the current user from Firebase Authentication. It returns a User object if the user is logged in, or null if no user is logged in.
+  User? get currentUser => _auth.currentUser;
+
   @override
   /// onReady is called when the controller is fully initialized and ready to be used. It's a good place to perform any initial setup or checks, such as checking if the user is already logged in and redirecting them accordingly.
   void onReady() {
@@ -152,7 +155,7 @@ class AuthenticationRepository extends GetxController {
   // [Forget Password] - Send Mail To User To Reset Password
   Future<void> sendPasswordResetEmail(String email) async {
     try {
-     await _auth.sendPasswordResetEmail(email: email);
+      await _auth.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
       throw UFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {

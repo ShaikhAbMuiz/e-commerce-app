@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
 import '../../../../data/repositories/authentication_repository.dart';
 import '../../../../utils/helpers/network_manager.dart';
 import '../../../../utils/popups/full_screen_loader.dart';
@@ -22,6 +21,7 @@ class LoginController extends GetxController {
 
   final localStorage = GetStorage();
 
+  /// Email & Password Login Method
   Future<void> loginWithEmailAndPassword() async {
     try {
       // Start Loading
@@ -71,6 +71,7 @@ class LoginController extends GetxController {
     }
   }
 
+  /// Google Sign-In Method
   Future<void> googleSignIn() async {
     try {
       // Start Loading

@@ -46,4 +46,23 @@ class UHelperFunction {
   static bool isDarkMode(BuildContext context) {
     return Theme.of(context).brightness == Brightness.dark;
   }
+
+  /// Function to get greeting message based on current time
+  static String getGreetingMessage() {
+    final hour = DateTime.now().hour;
+
+    if (hour >= 5 && hour < 12) {
+      // 5AM To 12PM - Good Morning
+      return 'Good Morning';
+    } else if (hour >= 12 && hour < 16) {
+      // 12PM TO 4PM - Good Afternoon
+      return 'Good Afternoon';
+    } else if (hour >= 16 && hour < 19) {
+      // 4PM TO 8PM - Good Evening
+      return 'Good Evening';
+    } else {
+      // 8PM TO 5AM - Good Night
+      return 'Good Night';
+    }
+  }
 }
