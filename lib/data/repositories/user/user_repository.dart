@@ -86,5 +86,51 @@ class UserRepository extends GetxController {
     }
   }
 
+  //
+  /// [Update] - Fuction To Update User Details based on current user ID
+  Future<void> updateSingleField(Map<String, dynamic> map) async {
+    try {
+      await _db
+          .collection(UKeys.userCollection)
+          .doc(AuthenticationRepository.instance.currentUser!.uid)
+          .update(map);
+    } on FirebaseAuthException catch (e) {
+      throw UFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } on FormatException catch (e) {
+      throw UFormatException(e.message).message;
+    } on PlatformException catch (e) {
+      throw UPlatformException(e.code).message;
+    } catch (e) {
+      // Debugging: Print the error to the console for debugging purposes
+      // print("========= FIRESTORE ERROR =========");
+      // print(e.toString());
+
+      throw "Somethings went wrong. Please try again later.";
+    }
+  }
+
+  /// [Delete User Record] - Fuction To Delete User Details based on current user ID
+  Future<void> removeUserRecord(String userId) async {
+    try {
+      await _db.collection(UKeys.userCollection).doc(userId).delete();
+    } on FirebaseAuthException catch (e) {
+      throw UFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } on FormatException catch (e) {
+      throw UFormatException(e.message).message;
+    } on PlatformException catch (e) {
+      throw UPlatformException(e.code).message;
+    } catch (e) {
+      // Debugging: Print the error to the console for debugging purposes
+      // print("========= FIRESTORE ERROR =========");
+      // print(e.toString());
+
+      throw "Somethings went wrong. Please try again later.";
+    }
+  }
+
   saveUserData(UserModel userModel) {}
 }

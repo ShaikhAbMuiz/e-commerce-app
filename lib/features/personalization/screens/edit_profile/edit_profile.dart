@@ -5,9 +5,11 @@ import 'package:e_commerce/common/widgets/texts/section_heading.dart';
 import 'package:e_commerce/features/personalization/screens/edit_profile/widgets/user_profile_with_edit_icon.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../controller/user_controller.dart';
+import '../change_name/change_name.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
@@ -43,11 +45,17 @@ class EditProfileScreen extends StatelessWidget {
               ),
 
               /// Account Details
+
+              // Name
               UserDetailRow(
                 title: "Name",
                 value: controller.user.value.fullName,
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => ChangeNameScreen());
+                },
               ),
+
+              // Username
               UserDetailRow(
                 title: "Username",
                 value: controller.user.value.username,
@@ -66,6 +74,7 @@ class EditProfileScreen extends StatelessWidget {
               ),
 
               /// Profile Settings
+              // User ID
               UserDetailRow(
                 title: "User ID",
                 value: controller.user.value.id,
@@ -74,16 +83,21 @@ class EditProfileScreen extends StatelessWidget {
                 icon: Iconsax.copy,
               ),
 
+              // Email
               UserDetailRow(
                 title: "Email",
                 value: controller.user.value.email,
                 onTap: () {},
               ),
+
+              // Phone Number
               UserDetailRow(
                 title: "Phone",
                 value: "+91 ${controller.user.value.phoneNumber}",
                 onTap: () {},
               ),
+
+              // Gender
               UserDetailRow(title: "Gender", value: "Male", onTap: () {}),
 
               /// Divider
@@ -93,7 +107,7 @@ class EditProfileScreen extends StatelessWidget {
 
               /// Close Account Text Button
               TextButton(
-                onPressed: () {},
+                onPressed: () => controller.deleteAccountWarningPopup(),
                 child: Text(
                   "Close Account",
                   style: Theme.of(

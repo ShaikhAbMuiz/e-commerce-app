@@ -71,4 +71,9 @@ instructions to reset your password''';
   static const String popularCategories = "Popular Categories";
   static const String popularProductsTitle = "Popular Products";
   static const String viewAll = "View All";
+
+  /// Profile Screen Change Name Screen
+  static const String profileScreenChangeNameTitle = "Update your name to keep your profile accurate and personalized";
+  
+  static const String saveButton = "Save";
 }

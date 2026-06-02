@@ -5,7 +5,7 @@ class UElevatedButton extends StatelessWidget {
   const UElevatedButton({
     super.key,
     required this.onPressed,
-    required this.child,
+    required this.child, 
   });
 
   final VoidCallback? onPressed;
