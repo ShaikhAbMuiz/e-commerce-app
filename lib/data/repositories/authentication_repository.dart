@@ -1,3 +1,4 @@
+import 'package:e_commerce/data/repositories/user/user_repository.dart';
 import 'package:e_commerce/features/authentication/screens/login/login.dart';
 import 'package:e_commerce/features/authentication/screens/onboarding_screen/onboarding_screen.dart';
 import 'package:e_commerce/utils/exceptions/firebase_auth_exceptions.dart';
@@ -191,5 +192,48 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-  ///
+  /// [Delete Account] -- Delete the user account permanently
+  Future<void> deleteUserAccount() async {
+    try {
+      // Delete user record from Firestore
+      await UserRepository.instance.removeUserRecord(currentUser!.uid);
+      // Delete user account from Firebase
+      await _auth.currentUser?.delete();
+    } on FirebaseAuthException catch (e) {
+      throw UFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } on FormatException catch (e) {
+      throw UFormatException(e.message).message;
+    } on PlatformException catch (e) {
+      throw UPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again later.";
+    }
+  }
+
+  /// [Delete Account] -- Delete the user account permanently
+  Future<void> reAuthenticateUserWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
+    try {
+      AuthCredential credential = EmailAuthProvider.credential(
+        email: email,
+        password: password,
+      );
+      currentUser!.reauthenticateWithCredential(credential);
+      
+    } on FirebaseAuthException catch (e) {
+      throw UFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } on FormatException catch (e) {
+      throw UFormatException(e.message).message;
+    } on PlatformException catch (e) {
+      throw UPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again later.";
+    }
+  }
 }
