@@ -13,6 +13,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../features/authentication/screens/signup/verify_email.dart';
+import '../../features/personalization/controller/user_controller.dart';
 import '../../navigation_menu.dart';
 
 class AuthenticationRepository extends GetxController {
@@ -197,6 +198,13 @@ class AuthenticationRepository extends GetxController {
     try {
       // Delete user record from Firestore
       await UserRepository.instance.removeUserRecord(currentUser!.uid);
+
+      // Remove Profile Picture from Cloudinary
+      String publicId = UserController.instance.user.value.publicId;
+      if (publicId.isNotEmpty) {
+        UserRepository.instance.deleteProfilePicture(publicId);
+      }
+
       // Delete user account from Firebase
       await _auth.currentUser?.delete();
     } on FirebaseAuthException catch (e) {
@@ -223,7 +231,6 @@ class AuthenticationRepository extends GetxController {
         password: password,
       );
       currentUser!.reauthenticateWithCredential(credential);
-      
     } on FirebaseAuthException catch (e) {
       throw UFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
