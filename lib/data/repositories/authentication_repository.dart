@@ -1,4 +1,6 @@
+import 'package:e_commerce/data/repositories/category/category_repository.dart';
 import 'package:e_commerce/data/repositories/user/user_repository.dart';
+import 'package:e_commerce/dummy_data.dart';
 import 'package:e_commerce/features/authentication/screens/login/login.dart';
 import 'package:e_commerce/features/authentication/screens/onboarding_screen/onboarding_screen.dart';
 import 'package:e_commerce/utils/exceptions/firebase_auth_exceptions.dart';
@@ -31,6 +33,8 @@ class AuthenticationRepository extends GetxController {
     FlutterNativeSplash.remove();
 
     screenRedirect();
+    Get.put(CategoryRepository().uploadCategories(UDummyData.categories));
+    super.onReady();
   }
 
   /// Function to check if it's the user's first time opening the app and redirect accordingly

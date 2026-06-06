@@ -4,6 +4,8 @@ import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/helpers/helper_fuction.dart';
 import 'package:flutter/material.dart';
 
+import '../images/circular_image.dart';
+
 class UVerticalImageText extends StatelessWidget {
   const UVerticalImageText({
     super.key,
@@ -26,14 +28,13 @@ class UVerticalImageText extends StatelessWidget {
       child: Column(
         children: [
           /// Circular Image
-          UCircularContainer(
+          UCircularImage(
             height: 55,
             width: 55,
-            backgroundColor:
-                backgroundColor ?? (dark ? UColors.dark : UColors.light),
-            padding: EdgeInsets.all(USizes.sm),
-            child: Image.asset(image, fit: BoxFit.cover),
+            image: image,
+            isNetworkImage: true,
           ),
+
           SizedBox(height: USizes.spaceBtwItems / 2),
 
           /// Title

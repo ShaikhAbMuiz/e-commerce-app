@@ -1,8 +1,5 @@
-import 'dart:convert';
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:crypto/crypto.dart';
 import 'package:e_commerce/features/authentication/models/user_model.dart';
 import 'package:e_commerce/utils/constants/keys.dart';
 import 'package:e_commerce/utils/exceptions/firebase_auth_exceptions.dart';
@@ -12,8 +9,7 @@ import 'package:e_commerce/utils/exceptions/platform_exceptions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
-import '../../../utils/constants/apis.dart';
+import '../../services/cloudinary_services.dart';
 import '../authentication_repository.dart';
 import 'package:dio/dio.dart' as dio;
 
@@ -22,6 +18,7 @@ class UserRepository extends GetxController {
 
   /// Variables
   final _db = FirebaseFirestore.instance;
+  final _cloudinaryServices = Get.put(CloudinaryServices());
 
   /// Fucntion To Store User Data in Firestore
   Future<void> saveUserRecord(UserModel user) async {
@@ -141,21 +138,10 @@ class UserRepository extends GetxController {
   /// [Upload Image] - Function to upload user profile picture to Cloudinary
   Future<dio.Response> upLoadImage(File image) async {
     try {
-      // API Call to upload image
-      String api = UApiUrls.uploadApi(UKeys.cloudName);
-
-      // Create FormData object
-      final dio.FormData formData = dio.FormData.fromMap({
-        'upload_preset': UKeys.uploadPreset,
-        'folder': UKeys.profileFolder,
-        'file': await dio.MultipartFile.fromFile(
-          image.path,
-          filename: image.path.split('/').last,
-        ),
-      });
-
-      // Heat Request to API
-      dio.Response response = await dio.Dio().post(api, data: formData);
+      dio.Response response = await _cloudinaryServices.upLoadImage(
+        image,
+        UKeys.profileFolder,
+      );
 
       return response;
     } catch (e) {
@@ -166,23 +152,7 @@ class UserRepository extends GetxController {
   /// [Delete Image] - Function to delete user profile picture from Cloudinary
   Future<dio.Response> deleteProfilePicture(String publicId) async {
     try {
-      String api = UApiUrls.deleteApi(UKeys.cloudName);
-
-      int timeStamp = (DateTime.now().millisecondsSinceEpoch / 1000).round();
-
-      String signatureBase = 'public_id=$publicId&timestamp=$timeStamp${UKeys.apiSecret}';
-      String signature = sha1.convert(utf8.encode(signatureBase)).toString();
-
-
-      final dio.FormData formData = dio.FormData.fromMap({  
-        'public_id': publicId,
-        'api_key':UKeys.apiKey,
-        'timestamp': timeStamp,
-        'signature': signature,
-        
-        });
-
-      dio.Response response = await dio.Dio().post(api, data: formData);
+      dio.Response response = await _cloudinaryServices.deleteImage(publicId);
 
       return response;
     } catch (e) {
