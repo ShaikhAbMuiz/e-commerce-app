@@ -8,7 +8,6 @@ import 'package:e_commerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/primary_header_container.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/promo_slider.dart';
-import 'package:e_commerce/utils/constants/images.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
@@ -59,15 +58,7 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   /// Banner
-                  UPromoSlider(
-                    banners: [
-                      UImages.homeBanner1,
-                      UImages.homeBanner2,
-                      UImages.homeBanner3,
-                      UImages.homeBanner4,
-                      UImages.homeBanner5,
-                    ],
-                  ),
+                  UPromoSlider(),
                   SizedBox(height: USizes.spaceBtwSections),
 
                   /// Section Heading --- Popular Products

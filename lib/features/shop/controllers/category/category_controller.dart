@@ -29,6 +29,7 @@ class CategoryController extends GetxController {
 
       // Fetch Categories
       List<CategoryModel> categories = await _repository.getAllCategories();
+      // Assign Categories to List Variables
       allCategories.assignAll(categories);
 
       // Fetch Featured Categories
