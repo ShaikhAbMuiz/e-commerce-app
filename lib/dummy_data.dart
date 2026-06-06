@@ -1,7 +1,38 @@
+import 'package:e_commerce/features/shop/models/banners_model.dart';
 import 'package:e_commerce/features/shop/models/category_model.dart';
+import 'package:e_commerce/routes/routes.dart';
 import 'package:e_commerce/utils/constants/images.dart';
 
 class UDummyData {
+  static final List<BannerModel> banner = [
+    BannerModel(
+      imageUrl: UImages.homeBanner1,
+      targetScreen: URoutes.order,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: UImages.homeBanner2,
+      targetScreen: URoutes.cart,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: UImages.homeBanner3,
+      targetScreen: URoutes.wishList,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: UImages.homeBanner4,
+      targetScreen: URoutes.productDetails,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: UImages.homeBanner5,
+      targetScreen: URoutes.profile,
+      active: true,
+    ),
+  ];
+
+  /// List of Categories
   static final List<CategoryModel> categories = [
     // Parent Categories
     CategoryModel(
@@ -106,9 +137,9 @@ class UDummyData {
       image: UImages.categoriesIconWatch,
       parentId: "3",
     ),
-    
+
     /// Electronics Sub Categories
-        CategoryModel(
+    CategoryModel(
       id: '17',
       name: 'Gadgets',
       image: UImages.categoriesIconGadgets,
@@ -161,6 +192,5 @@ class UDummyData {
       parentId: '6',
       isFeatured: false,
     ),
-
   ];
 }
