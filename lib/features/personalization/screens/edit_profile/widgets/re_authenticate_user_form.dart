@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../../common/styles/padding.dart';
 import '../../../../../common/widgets/appbar/appbar.dart';

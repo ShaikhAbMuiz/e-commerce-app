@@ -8,13 +8,16 @@ import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/category/category_controller.dart';
+
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = CategoryController.instance;
     return DefaultTabController(
-      length: 5,
+      length: controller.featuredCategories.length,
       child: Scaffold(
         /// Appbar
         body: NestedScrollView(
@@ -71,25 +74,19 @@ class StoreScreen extends StatelessWidget {
                 ),
 
                 bottom: UTabBar(
-                  tabs: [
-                    Tab(text: "Sports"),
-                    Tab(text: "Clothing"),
-                    Tab(text: "Shoes"),
-                    Tab(text: "Accessories"),
-                    Tab(text: "Electronics"),
-                  ],
+                  tabs:
+                      controller.featuredCategories
+                          .map((category) => Tab(text: category.name))
+                          .toList(),
                 ),
               ),
             ];
           },
           body: TabBarView(
-            children: [
-              UCategoryTab(),
-              UCategoryTab(),
-              UCategoryTab(),
-              UCategoryTab(),
-              UCategoryTab(),
-            ],
+            children:
+                controller.featuredCategories
+                    .map((category) => UCategoryTab())
+                    .toList(),
           ),
         ),
       ),

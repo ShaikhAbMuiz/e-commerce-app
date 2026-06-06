@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/features/authentication/models/user_model.dart';
 import 'package:e_commerce/utils/constants/keys.dart';
@@ -8,14 +9,16 @@ import 'package:e_commerce/utils/exceptions/platform_exceptions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
+import '../../services/cloudinary_services.dart';
 import '../authentication_repository.dart';
+import 'package:dio/dio.dart' as dio;
 
 class UserRepository extends GetxController {
   static UserRepository get instance => Get.find();
 
   /// Variables
   final _db = FirebaseFirestore.instance;
+  final _cloudinaryServices = Get.put(CloudinaryServices());
 
   /// Fucntion To Store User Data in Firestore
   Future<void> saveUserRecord(UserModel user) async {
@@ -129,6 +132,31 @@ class UserRepository extends GetxController {
       // print(e.toString());
 
       throw "Somethings went wrong. Please try again later.";
+    }
+  }
+
+  /// [Upload Image] - Function to upload user profile picture to Cloudinary
+  Future<dio.Response> upLoadImage(File image) async {
+    try {
+      dio.Response response = await _cloudinaryServices.upLoadImage(
+        image,
+        UKeys.profileFolder,
+      );
+
+      return response;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  /// [Delete Image] - Function to delete user profile picture from Cloudinary
+  Future<dio.Response> deleteProfilePicture(String publicId) async {
+    try {
+      dio.Response response = await _cloudinaryServices.deleteImage(publicId);
+
+      return response;
+    } catch (e) {
+      throw e.toString();
     }
   }
 

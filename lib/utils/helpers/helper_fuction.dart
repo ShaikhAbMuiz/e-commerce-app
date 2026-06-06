@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
 
 class UHelperFunction {
   UHelperFunction._();
@@ -64,5 +68,19 @@ class UHelperFunction {
       // 8PM TO 5AM - Good Night
       return 'Good Night';
     }
+  }
+
+  static Future<File> assetToFile(String assetPath) async {
+    // Load asset bytes
+    final byteData = await rootBundle.load(assetPath);
+
+    //Get temp directory
+    final tempDir = await getTemporaryDirectory();
+    final file = File('${tempDir.path}/${assetPath.split('/').last}');
+
+    // Write bytes to temp file
+    await file.writeAsBytes(byteData.buffer.asUint8List());
+
+    return file;
   }
 }
