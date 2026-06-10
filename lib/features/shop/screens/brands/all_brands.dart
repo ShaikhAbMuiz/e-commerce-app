@@ -7,9 +7,7 @@ import 'package:e_commerce/features/shop/screens/brands/brand_products.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../controllers/brand/brand_controller.dart';
-import '../../models/brand_model.dart';
 
 class BrandScreen extends StatelessWidget {
   const BrandScreen({super.key});
