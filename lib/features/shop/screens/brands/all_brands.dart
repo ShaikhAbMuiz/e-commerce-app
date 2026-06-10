@@ -8,11 +8,15 @@ import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/brand/brand_controller.dart';
+import '../../models/brand_model.dart';
+
 class BrandScreen extends StatelessWidget {
   const BrandScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = BrandController.instance;
     return Scaffold(
       appBar: UAppBar(
         title: Text("Brand", style: Theme.of(context).textTheme.headlineMedium),
@@ -27,14 +31,29 @@ class BrandScreen extends StatelessWidget {
               USectionHeading(title: "Brand", showActionButton: false),
               SizedBox(height: USizes.spaceBtwItems),
 
-              UGrideLayout(
-                itemCount: 10,
-                itemBuilder:
-                    (context, index) => UBrandCard(
+              /// List of Brands
+              Obx(() {
+                // [Loading] - State
+                if (controller.isLoading.value) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                // [Empty] - State
+                if (controller.allBrands.isEmpty) {
+                  return Center(child: Text("No Brands Found"));
+                }
+                // [DataFound] - State
+                return UGrideLayout(
+                  itemCount: controller.allBrands.length,
+                  itemBuilder: (context, index) {
+                    final brand = controller.allBrands[index];
+                    return UBrandCard(
+                      brand: brand,
                       onTap: () => Get.to(() => BrandProductsScreen()),
-                    ),
-                mainAxisExtent: 80,
-              ),
+                    );
+                  },
+                  mainAxisExtent: 80,
+                );
+              }),
             ],
           ),
         ),

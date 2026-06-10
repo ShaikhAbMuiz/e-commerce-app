@@ -6,8 +6,9 @@ class UKeys {
   static const String userCollection = "Users";
   static const String categoryCollection = "Categories";
   static const String bannerCollection = "Banners";
+  static const String brandCollection = "Brands";
 
-  // Cloudinary keys and secrets and cloud name 
+  // Cloudinary keys and secrets and cloud name
   static const String cloudName = "df8qdc4ps";
   static const String uploadPreset = "upload_image";
   static const String profileFolder = "Profile Pictures";
@@ -17,4 +18,5 @@ class UKeys {
   // Cloudinary folders names
   static const String categoryFolder = "Category Pictures";
   static const String bannerFolder = "Banner Images";
+  static const String brandFolder = "Brand Images";
 }

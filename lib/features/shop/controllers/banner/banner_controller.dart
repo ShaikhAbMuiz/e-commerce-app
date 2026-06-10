@@ -36,6 +36,7 @@ class BannerController extends GetxController {
       isLoading.value = true;
 
       List<BannerModel> activeBanners = await _repository.fetchActiveBanners();
+      // Assign All Banners
       banners.assignAll(activeBanners);
     } catch (e) {
       USnackBarHelpers.errorSnackBar(title: ' Failded', message: e.toString());
