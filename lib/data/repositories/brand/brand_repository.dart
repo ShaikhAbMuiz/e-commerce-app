@@ -36,20 +36,16 @@ class BrandRepository extends GetxController {
         );
 
         // Check if upload was successful
-
         if (response.statusCode == 200) {
           // Get image url
           brand.image = response.data['url'];
         }
 
         // Upload banner details to firestore
-
         await _db
             .collection(UKeys.brandCollection)
             .doc(brand.id)
             .set(brand.toJson());
-
-        print('Brand ${brand.name} uploaded successfully');
       }
     } on FirebaseException catch (e) {
       throw UFirebaseException(e.code).message;

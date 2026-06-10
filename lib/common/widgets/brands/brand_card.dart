@@ -3,7 +3,6 @@ import 'package:e_commerce/common/widgets/images/rounded_image.dart';
 import 'package:e_commerce/common/widgets/texts/brand_title_with_verify_icon.dart';
 import 'package:e_commerce/features/shop/models/brand_model.dart';
 import 'package:e_commerce/utils/constants/enums.dart';
-import 'package:e_commerce/utils/constants/images.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
