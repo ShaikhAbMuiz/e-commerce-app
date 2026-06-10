@@ -5,6 +5,8 @@ import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/helpers/helper_fuction.dart';
 import 'package:flutter/material.dart';
 
+import '../../../features/shop/models/brand_model.dart';
+
 class UBrandShowCase extends StatelessWidget {
   const UBrandShowCase({super.key, required this.images});
 
@@ -23,7 +25,7 @@ class UBrandShowCase extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           /// Brand with Product Count
-          UBrandCard(showBoader: false),
+          UBrandCard(showBoader: false, brand: BrandModel.empty()),
 
           Row(
             children:
