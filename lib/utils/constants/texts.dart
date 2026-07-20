@@ -1,6 +1,9 @@
 class UTexts {
   UTexts._();
 
+  // Currency
+  static const String currency = "\₹";
+
   //  Onboarding Screen titles
   static const String onboardingTitle1 = "Welcome to My Store";
   static const String onboardingTitle2 = "Shop Everthing You Love!";

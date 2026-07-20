@@ -1,3 +1,4 @@
+import 'package:e_commerce/data/repositories/product/product_repository.dart';
 import 'package:e_commerce/data/repositories/user/user_repository.dart';
 import 'package:e_commerce/features/authentication/screens/login/login.dart';
 import 'package:e_commerce/features/authentication/screens/onboarding_screen/onboarding_screen.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import '../../dummy_data.dart';
 import '../../features/authentication/screens/signup/verify_email.dart';
 import '../../features/personalization/controller/user_controller.dart';
 import '../../navigation_menu.dart';
@@ -33,6 +35,7 @@ class AuthenticationRepository extends GetxController {
     // Get.put(CategoryRepository().uploadCategories(UDummyData.categories));
     // Get.put(BannerRepository().uploadBanners(UDummyData.banner));
     // Get.put(BrandRepository().uploadBrands(UDummyData.brands));
+    // Get.put(ProductRepository().uploadProducts(UDummyData.products));
     super.onReady();
   }
 

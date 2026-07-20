@@ -2,28 +2,34 @@ import 'package:e_commerce/common/styles/shadow.dart';
 import 'package:e_commerce/common/widgets/custom_shapes/rounded_container.dart';
 import 'package:e_commerce/common/widgets/icons/circular_icon.dart';
 import 'package:e_commerce/common/widgets/images/rounded_image.dart';
-
 import 'package:e_commerce/common/widgets/texts/brand_title_with_verify_icon.dart';
 import 'package:e_commerce/common/widgets/texts/product_price_text.dart';
 import 'package:e_commerce/common/widgets/texts/product_title_text.dart';
 import 'package:e_commerce/features/shop/screens/product_details/product_details.dart';
 import 'package:e_commerce/utils/constants/colors.dart';
-
-import 'package:e_commerce/utils/constants/images.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/helpers/helper_fuction.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import '../../../../features/shop/controllers/product/product_controller.dart';
+import '../../../../features/shop/models/product_model.dart';
 
 class UProductCardVertical extends StatelessWidget {
-  const UProductCardVertical({super.key});
+  const UProductCardVertical({super.key, required this.product});
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     final dark = UHelperFunction.isDarkMode(context);
+    final controller = ProductController.instance;
+    String? salePercentage = controller.calculateSalePercentage(
+      product.price,
+      product.salePrice,
+    );
+
     return GestureDetector(
-      onTap: () => Get.to(() => const ProductDetailsScreen()),
+      onTap: () => Get.to(() => ProductDetailsScreen(product: product)),
       child: Container(
         width: 180,
         padding: EdgeInsets.all(1),
@@ -42,32 +48,34 @@ class UProductCardVertical extends StatelessWidget {
               backgroundColor: dark ? UColors.dark : UColors.light,
               child: Stack(
                 children: [
-                  /// Thumbnail
+                  /// Thumbnail Image
                   Center(
                     child: URoundedImage(
-                      imageUrl: UImages.product15Image,
+                      imageUrl: product.thumbnail,
                       fit: BoxFit.fitWidth,
+                      isNetworkImage: true,
                     ),
                   ),
 
                   /// Discount Tag
-                  Positioned(
-                    top: 12.0,
-                    child: URoundedContainer(
-                      radius: USizes.sm,
-                      backgroundColor: UColors.yellow.withValues(alpha: 0.8),
-                      padding: EdgeInsets.symmetric(
-                        horizontal: USizes.sm,
-                        vertical: USizes.xs,
-                      ),
-                      child: Text(
-                        "20%",
-                        style: Theme.of(
-                          context,
-                        ).textTheme.labelLarge!.apply(color: UColors.dark),
+                  if (salePercentage != null)
+                    Positioned(
+                      top: 12.0,
+                      child: URoundedContainer(
+                        radius: USizes.sm,
+                        backgroundColor: UColors.yellow.withValues(alpha: 0.8),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: USizes.sm,
+                          vertical: USizes.xs,
+                        ),
+                        child: Text(
+                          '$salePercentage% Off',
+                          style: Theme.of(
+                            context,
+                          ).textTheme.labelLarge!.apply(color: UColors.dark),
+                        ),
                       ),
                     ),
-                  ),
 
                   /// Favorite Button
                   Positioned(
@@ -90,11 +98,11 @@ class UProductCardVertical extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   /// Product Title
-                  UProductTitleText(title: "Blue bata shoes", smallSize: true),
+                  UProductTitleText(title: product.title, smallSize: true),
                   SizedBox(height: USizes.spaceBtwItems / 2),
 
                   /// Product Brand and Verified Icon
-                  UBrandTitleWithVerifyIcon(title: "Bata"),
+                  UBrandTitleWithVerifyIcon(title: product.brand!.name),
                 ],
               ),
             ),
@@ -107,7 +115,9 @@ class UProductCardVertical extends StatelessWidget {
                 /// Product Price
                 Padding(
                   padding: const EdgeInsets.only(left: USizes.sm),
-                  child: UProductPriceText(price: "65"),
+                  child: UProductPriceText(
+                    price: controller.getProductPrice(product),
+                  ),
                 ),
 
                 /// Add To Cart Button
