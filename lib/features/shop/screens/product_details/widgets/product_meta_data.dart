@@ -8,11 +8,23 @@ import 'package:e_commerce/utils/constants/images.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../utils/constants/enums.dart';
+import '../../../../../utils/constants/texts.dart';
+import '../../../controllers/product/product_controller.dart';
+import '../../../models/product_model.dart';
+
 class UProductMetaData extends StatelessWidget {
-  const UProductMetaData({super.key});
+  const UProductMetaData({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
+    final controller = ProductController.instance;
+    String? salePercentage = controller.calculateSalePercentage(
+      product.price,
+      product.salePrice,
+    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -20,33 +32,41 @@ class UProductMetaData extends StatelessWidget {
         Row(
           children: [
             /// Sale Tag
-            URoundedContainer(
-              radius: USizes.sm,
-              backgroundColor: UColors.yellow.withValues(alpha: 0.8),
-              padding: EdgeInsets.symmetric(
-                horizontal: USizes.sm,
-                vertical: USizes.xs,
+            if (salePercentage != null) ...[
+              URoundedContainer(
+                radius: USizes.sm,
+                backgroundColor: UColors.yellow.withValues(alpha: 0.8),
+                padding: EdgeInsets.symmetric(
+                  horizontal: USizes.sm,
+                  vertical: USizes.xs,
+                ),
+                child: Text(
+                  "$salePercentage% Off",
+                  style: Theme.of(
+                    context,
+                  ).textTheme.labelLarge!.apply(color: UColors.dark),
+                ),
               ),
-              child: Text(
-                "20%",
-                style: Theme.of(
-                  context,
-                ).textTheme.labelLarge!.apply(color: UColors.dark),
-              ),
-            ),
-            SizedBox(width: USizes.spaceBtwItems),
+              SizedBox(width: USizes.spaceBtwItems),
+            ],
 
-            /// Original Price
-            Text(
-              "\$250",
-              style: Theme.of(context).textTheme.titleSmall!.apply(
-                decoration: TextDecoration.lineThrough,
+            /// Actual Price
+            if (product.productType == ProductType.single.toString() &&
+                product.salePrice > 0) ...[
+              Text(
+                "${UTexts.currency} ${product.price.toStringAsFixed(0)}",
+                style: Theme.of(context).textTheme.titleSmall!.apply(
+                  decoration: TextDecoration.lineThrough,
+                ),
               ),
-            ),
-            SizedBox(width: USizes.spaceBtwItems),
+              SizedBox(width: USizes.spaceBtwItems),
+            ],
 
-            /// Sale Price
-            UProductPriceText(price: "200", islarge: true),
+            /// Sale Price or Actual Price
+            UProductPriceText(
+              price: controller.getProductPrice(product),
+              islarge: true,
+            ),
             Spacer(),
 
             /// Share button
@@ -56,7 +76,7 @@ class UProductMetaData extends StatelessWidget {
         SizedBox(height: USizes.spaceBtwItems / 1.5),
 
         /// Product Title
-        UProductTitleText(title: "Beard Growth oil"),
+        UProductTitleText(title: product.title, maxLines: 2),
         SizedBox(height: USizes.spaceBtwItems / 1.5),
 
         /// Product Status
@@ -64,7 +84,10 @@ class UProductMetaData extends StatelessWidget {
           children: [
             UProductTitleText(title: "Status"),
             SizedBox(width: USizes.spaceBtwItems),
-            Text("In Stock", style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              controller.getProductStatus(product.stock),
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             SizedBox(height: USizes.spaceBtwItems / 1.5),
           ],
         ),
@@ -75,14 +98,17 @@ class UProductMetaData extends StatelessWidget {
             /// Brand Image
             UCircularImage(
               padding: 0,
-              image: UImages.appleLogo,
+              isNetworkImage: true,
+              image: product.brand != null ? product.brand!.image : "",
               width: 32,
               height: 32,
             ),
             SizedBox(width: USizes.spaceBtwItems),
 
             /// Brand Title
-            UBrandTitleWithVerifyIcon(title: "Beard "),
+            UBrandTitleWithVerifyIcon(
+              title: product.brand != null ? product.brand!.name : "",
+            ),
           ],
         ),
       ],

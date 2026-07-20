@@ -3,6 +3,7 @@ import 'package:e_commerce/common/widgets/products/product_card/product_card_ver
 import 'package:e_commerce/common/widgets/textfields/search_bar.dart';
 import 'package:e_commerce/common/widgets/texts/section_heading.dart';
 import 'package:e_commerce/features/shop/controllers/home/home_controller.dart';
+import 'package:e_commerce/features/shop/controllers/product/product_controller.dart';
 import 'package:e_commerce/features/shop/screens/all_products/all_products.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/home_categories.dart';
@@ -13,6 +14,8 @@ import 'package:e_commerce/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../models/product_model.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -20,6 +23,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
     final controller = Get.put(HomeController());
+    final productController = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -69,12 +73,27 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: USizes.spaceBtwItems),
 
                   /// GridView of Products Card
-                  UGrideLayout(
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      return UProductCardVertical();
-                    },
-                  ),
+                  Obx(() {
+                    // Loading State
+                    if (productController.isLoading.value) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+
+                    // Empty State
+                    if (productController.featuredProducts.isEmpty) {
+                      return Center(child: Text("No Products Found"));
+                    }
+
+                    // Data Found State
+                    return UGrideLayout(
+                      itemCount: productController.featuredProducts.length,
+                      itemBuilder: (context, index) {
+                        ProductModel product =
+                            productController.featuredProducts[index];
+                        return UProductCardVertical(product: product);
+                      },
+                    );
+                  }),
                 ],
               ),
             ),

@@ -6,6 +6,8 @@ import 'package:e_commerce/utils/constants/images.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
+import '../../../models/product_model.dart';
+
 class UCategoryTab extends StatelessWidget {
   const UCategoryTab({super.key});
 
@@ -38,14 +40,15 @@ class UCategoryTab extends StatelessWidget {
               ),
               SizedBox(height: USizes.spaceBtwItems),
 
-
-/// You might like Section Heading
+              /// You might like Section Heading
               USectionHeading(title: "You might like", onPressed: () {}),
 
-/// Grid Layout Products
+              /// Grid Layout Products
               UGrideLayout(
                 itemCount: 4,
-                itemBuilder: (context, index) => const UProductCardVertical(),
+                itemBuilder:
+                    (context, index) =>
+                        UProductCardVertical(product: ProductModel.empty()),
               ),
 
               SizedBox(height: USizes.spaceBtwItems),

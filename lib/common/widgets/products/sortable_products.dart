@@ -4,6 +4,8 @@ import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../features/shop/models/product_model.dart';
+
 class USortableProducts extends StatelessWidget {
   const USortableProducts({super.key});
 
@@ -27,7 +29,7 @@ class USortableProducts extends StatelessWidget {
         UGrideLayout(
           itemCount: 10,
           itemBuilder: (context, index) {
-            return UProductCardVertical();
+            return UProductCardVertical(product: ProductModel.empty());
           },
         ),
       ],

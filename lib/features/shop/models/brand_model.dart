@@ -37,6 +37,17 @@ class BrandModel {
     };
   }
 
+  /// Convert Json to Model (Factory Constructor)
+  factory BrandModel.fromJson(Map<String, dynamic> json) {
+    return BrandModel(
+      id: json['id'],
+      name: json['name'],
+      image: json['image'],
+      isFeatured: json['isFeatured'],
+      productsCount: json['productsCount'],
+    );
+  }
+
   /// Convert Json to Model
   factory BrandModel.fromSnapshot(
     DocumentSnapshot<Map<String, dynamic>> document,
